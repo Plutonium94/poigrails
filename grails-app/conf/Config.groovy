@@ -132,7 +132,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':  ['permitAll']
 ]
 
-images.groupes.path = "C:\\wamp\\www\\vic\\groupes\\"
-images.groupes.url =  "http://localhost/vic/groupes/"
-images.pois.path = "C:\\wamp\\www\\vic\\pois\\"
-images.pois.url = "http://localhost/vic/pois/"
+images.groupes.path = "D:\\poigrails\\grails-app\\assets\\images\\groupes\\" //"C:\\wamp\\www\\vic\\groupes\\"
+images.groupes.url =  "http://localhost:8080/vic/assets/groupes/" //"http://localhost/vic/groupes/"
+images.pois.path = "D:\\poigrails\\grails-app\\assets\\images\\pois\\" //"C:\\wamp\\www\\vic\\pois\\"
+images.pois.url = "http://localhost:8080/vic/assets/pois/"
