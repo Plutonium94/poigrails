@@ -37,7 +37,17 @@
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
+				
 			</g:uploadForm>
+			<!--<div id="cartePOI" class="cartePOI"></div>-->
+			<asset:javascript src="carte.js"/>
+			<g:javascript >
+
+				var lat = <g:formatNumber number="${POIInstance?.latitude}" maxFractionDigits="10"  locale="US"/>;
+				var lng = <g:formatNumber number="${POIInstance?.longitude}" maxFractionDigits="10" locale="US" />;
+				cartePOI(lat, lng, true);
+
+			</g:javascript>
 		</div>
 	</body>
 </html>
