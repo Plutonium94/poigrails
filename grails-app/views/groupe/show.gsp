@@ -47,7 +47,9 @@
 					<span id="images-label" class="property-label"><g:message code="groupe.images.label" default="Images" /></span>
 					
 						<g:each in="${groupeInstance.images}" var="i">
-						<span class="property-value" aria-labelledby="images-label"><g:link controller="image" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+						<!--<span class="property-value" aria-labelledby="images-label"><g:link controller="image" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>-->
+							<img src="${grailsApplication.config.images.groupes.url}${i.chemin}" title="${i.titre}" alt="${i.titre}" />
+
 						</g:each>
 					
 				</li>
@@ -57,7 +59,7 @@
 				<li class="fieldcontain">
 					<span id="pois-label" class="property-label"><g:message code="groupe.pois.label" default="Pois" /></span>
 
-						<p>Total pois : ${groupeInstance.pois.size()}</p>
+						<span class="property-value">Total pois : ${groupeInstance.pois.size()}</span>
 					
 						<g:each in="${groupeInstance.pois}" var="p">
 							<span class="property-value" aria-labelledby="pois-label">

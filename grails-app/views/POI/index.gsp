@@ -27,15 +27,15 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="POI.auteur.label" default="Auteur" /></th>
+						<g:sortableColumn property="nom" title="${message(code: 'POI.nom.label', default: 'Nom')}" />
 					
+						<th><g:message code="POI.auteur.label" default="Auteur" /></th>
 						<g:sortableColumn property="description" title="${message(code: 'POI.description.label', default: 'Description')}" />
 					
 						<g:sortableColumn property="latitude" title="${message(code: 'POI.latitude.label', default: 'Latitude')}" />
 					
 						<g:sortableColumn property="longitude" title="${message(code: 'POI.longitude.label', default: 'Longitude')}" />
 					
-						<g:sortableColumn property="nom" title="${message(code: 'POI.nom.label', default: 'Nom')}" />
 					
 					</tr>
 				</thead>
@@ -49,7 +49,7 @@
 						<sec:ifAnyGranted roles="ROLE_ADMINISTRATEUR,ROLE_MODERATEUR">
 							<td><g:link controller="utilisateur" action="show" id="${POIInstance?.auteur?.id}">${fieldValue(bean: POIInstance, field: "auteur")}</g:link></td>
 						</sec:ifAnyGranted>
-						<sec:ifNotGranted roles="ROLE_ADMINISTRATEUR,ROLE_ADMINISTRATEUR">
+						<sec:ifNotGranted roles="ROLE_ADMINISTRATEUR,ROLE_MODERATEUR">
 							<td>${fieldValue(bean: POIInstance, field: "auteur")}</td>
 						</sec:ifNotGranted>
 

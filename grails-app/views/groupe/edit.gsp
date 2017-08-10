@@ -150,7 +150,11 @@
 
 				var allPois = document.querySelectorAll('#poiListe .poi');
 				for(var i = 0;  i < allPois.length; i++) {
-					if()
+					var poi = allPois[i];
+					poi.addEventListener('dragover',stop,false);
+					poi.addEventListener('drop',tomber,false);
+					poi.addEventListener('dragstart',drag,false);
+					poi.addEventListener('dragend',fin, false);
 				}
 					
 			};

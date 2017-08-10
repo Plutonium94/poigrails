@@ -133,7 +133,7 @@
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(carte);
 
-			var marker = L.marker([x,y]).addTo(carte)
+			var marker = L.marker([x,y], {draggable: true}).addTo(carte);
 		})();
 	</g:javascript>
 	
