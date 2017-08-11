@@ -30,7 +30,7 @@
 
 		<div id="poiListe">
 			<g:each in="${POIInstanceList}" var="p" status="i">
-				<div class="poi" draggable="true">
+				<div class="poi" draggable="true" data-id="${p.id}" data-ligne="${i}">
 					<!--<g:link controller="POI" action="show" id="${p.id}">-->
 						${p.nom}
 					<!--</g:link>-->

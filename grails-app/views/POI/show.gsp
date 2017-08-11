@@ -124,7 +124,7 @@
 
 		var lat = <g:formatNumber number="${POIInstance?.latitude}" maxFractionDigits="10"  locale="US"/>;
 		var lng = <g:formatNumber number="${POIInstance?.longitude}" maxFractionDigits="10" locale="US" />;
-		cartePOI(lat, lng, false);
+		cartePOI(lat, lng, false, false);
 
 	</g:javascript>
 	

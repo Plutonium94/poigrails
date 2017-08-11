@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<asset:stylesheet src="leaflet.css"/>
 	</head>
 	<body>
 		<a href="#edit-POI" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -38,14 +39,15 @@
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
 				
+				
 			</g:uploadForm>
-			<!--<div id="cartePOI" class="cartePOI"></div>-->
+			<div id="cartePOI" class="cartePOI"></div>
 			<asset:javascript src="carte.js"/>
 			<g:javascript >
 
 				var lat = <g:formatNumber number="${POIInstance?.latitude}" maxFractionDigits="10"  locale="US"/>;
 				var lng = <g:formatNumber number="${POIInstance?.longitude}" maxFractionDigits="10" locale="US" />;
-				cartePOI(lat, lng, true);
+				cartePOI(lat, lng, true, false);
 
 			</g:javascript>
 		</div>
