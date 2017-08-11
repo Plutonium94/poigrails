@@ -2,7 +2,10 @@ package fr.mbds.tpgrails
 
 import grails.transaction.Transactional
 
-
+/**
+* This service contains the method to initialize the Pois, groupes and users at the launching of the server.
+* It should be called from Bootstrap.groovy
+*/
 @Transactional
 class InitializePoiAppService {
 

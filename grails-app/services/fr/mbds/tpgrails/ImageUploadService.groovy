@@ -28,7 +28,7 @@ class ImageUploadService {
             } else {
                 def fileName = createFileName(poi.id)
                 f.transferTo(new File(cheminSauvegarde+fileName))
-                def im = new Image(chemin:fileName, titre: params["image"+imgCpt+"Title"] + imgCpt)
+                def im = new Image(chemin:fileName, titre: params["image"+imgCpt+"Title"])
                 poi.addToImages(im)
                 imgCpt++
             }
