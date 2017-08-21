@@ -1,5 +1,5 @@
 
-function cartePOI(latitude, longitude, editable, create) {
+function cartePOI(latitude, longitude, editable, create, applicationName, id) {
 	var x = latitude; 
 	var y = longitude;
 
@@ -19,11 +19,14 @@ function cartePOI(latitude, longitude, editable, create) {
 	var marker = L.marker([x,y], {draggable: editable}).addTo(carte);
 
 	if(editable) {
-		marker.on('dragend', function(evt) {
-			var latLng = marker.getLatLng();
-			document.querySelector('input[name="latitude"]').value = latLng.lat;
-			document.querySelector('input[name="longitude"]').value = latLng.lng;
-
+		marker.on('dragend', function() {
+			if(applicationName && id) {
+				$.post('/' + applicationName + '/POI/updateCoordinates', {id: id, latitude: latitude, longitude: longitude}, function(data) {
+					$('#latitude').val(data.latitude);
+					$('#longitude').val(data.longitude);
+				})
+				
+			}
 		});
 	}
 }

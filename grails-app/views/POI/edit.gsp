@@ -38,8 +38,6 @@
 				<fieldset class="buttons">
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</fieldset>
-				
-				
 			</g:uploadForm>
 			<div id="cartePOI" class="cartePOI"></div>
 			<asset:javascript src="carte.js"/>
@@ -47,7 +45,7 @@
 
 				var lat = <g:formatNumber number="${POIInstance?.latitude}" maxFractionDigits="10"  locale="US"/>;
 				var lng = <g:formatNumber number="${POIInstance?.longitude}" maxFractionDigits="10" locale="US" />;
-				cartePOI(lat, lng, true, false);
+				cartePOI(lat, lng, true, false, "${grails.util.Metadata.current.'app.name'}", ${POIInstance?.id});
 
 			</g:javascript>
 		</div>

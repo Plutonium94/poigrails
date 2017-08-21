@@ -1,7 +1,7 @@
 package fr.mbds.tpgrails
 
 
-
+import grails.converters.JSON
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -90,6 +90,21 @@ class POIController {
                 POIInstance.save flush:true
                 respond POIInstance, [status: OK, formats:['json']]
             }
+        }
+    }
+
+    @Secured(['ROLE_ADMINISTRATEUR','ROLE_MODERATEUR'])    
+    @Transactional
+    def updateCoordinates() {
+        def id = params.id as Long
+        def p = POI.get(id)
+        if(p != null) {
+            p.latitude = params.latitude as Double
+            p.longitude = params.longitude as Double
+            p.save flush:true
+            render ([latitude: p.latitude, longitude: p.longitude] as JSON)
+        } else {
+            render([errorMessage]: "Could not update coordinates since not matching POI with id " + params.id)
         }
     }
 
