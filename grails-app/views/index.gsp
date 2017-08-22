@@ -65,6 +65,12 @@
 				margin: 0.25em 0;
 			}
 
+			#currentUserModify {
+				text-decoration: underline;
+				cursor: pointer;
+				color: #48802c;
+			}
+
 			@media screen and (max-width: 480px) {
 				#status {
 					display: none;
@@ -84,11 +90,10 @@
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
 		<div id="page-body" role="main">
-			<h1>Bienvenue aux Points d'Intérêt</h1>
+			<h1>Bienvenue <a id="currentUser"><sec:loggedInUserInfo field="username"/></a>, aux Points d'Intérêt</h1>
 			<p>Vous découvrez sur ce site differents points d'intérêt dans les Alpes Maritimes (06).</p>
 
 			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
 				<ul>
 					<li class="controller"><g:link controller="POI" action="index"> Les Points d'Intérêt</g:link></li>
 					<li class="controller"><g:link controller="Groupe" action="index">Les Groupes</g:link></li>
@@ -98,6 +103,15 @@
 					
 				</ul>
 			</div>
+
+			<p><a id="currentUserModify">Modifier votre profil</a></p>
 		</div>
+		<script>
+			window.addEventListener('load', function() {
+				var currentUserId = '<sec:loggedInUserInfo field="id"/>';
+				var href='/${grails.util.Metadata.current.'app.name'}/utilisateur/edit/<sec:loggedInUserInfo field="id" />';
+				document.getElementById('currentUserModify').setAttribute('href',href);
+			});
+		</script>
 	</body>
 </html>

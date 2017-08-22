@@ -19,12 +19,13 @@ function cartePOI(latitude, longitude, editable, create, applicationName, id) {
 	var marker = L.marker([x,y], {draggable: editable}).addTo(carte);
 
 	if(editable) {
-		marker.on('dragend', function() {
+		marker.on('dragend', function(evt) {
+			var np = evt.target._latlng;
 			if(applicationName && id) {
-				$.post('/' + applicationName + '/POI/updateCoordinates', {id: id, latitude: latitude, longitude: longitude}, function(data) {
+				$.post('/' + applicationName + '/POI/updateCoordinates', {id: id, latitude: np.lat, longitude: np.lng}, function(data) {
 					$('#latitude').val(data.latitude);
 					$('#longitude').val(data.longitude);
-				})
+				});
 				
 			}
 		});

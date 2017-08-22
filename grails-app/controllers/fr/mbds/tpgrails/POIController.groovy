@@ -96,16 +96,30 @@ class POIController {
     @Secured(['ROLE_ADMINISTRATEUR','ROLE_MODERATEUR'])    
     @Transactional
     def updateCoordinates() {
+        def errorMessage = "";
         def id = params.id as Long
+        println(id)
         def p = POI.get(id)
         if(p != null) {
             p.latitude = params.latitude as Double
             p.longitude = params.longitude as Double
-            p.save flush:true
-            render ([latitude: p.latitude, longitude: p.longitude] as JSON)
+
+            
+            if(p.save(flush:true)) {
+
+                render ([latitude: p.latitude, longitude: p.longitude] as JSON)
+                return
+            } else {
+                p.errors.each {
+                    errorMessage += it
+                }
+            }
+
+            
         } else {
-            render([errorMessage]: "Could not update coordinates since not matching POI with id " + params.id)
+            errorMessage = "Could not update coordinates since not matching POI with id " + params.id;
         }
+        render([errorMessage]: errorMessage)
     }
 
     @Secured(['ROLE_ADMINISTRATEUR','ROLE_MODERATEUR'])    
