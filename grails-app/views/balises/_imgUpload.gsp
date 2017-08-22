@@ -1,5 +1,5 @@
 <input type="file" name="image1" />
-<%--<g:textField type="text" name="image1Title" />--%>
+<g:textField type="text" name="image1Title" />
 <button type="button" id="plus">+</button>
 <script>
 	var compteImages = 1;
@@ -13,10 +13,10 @@
 		nouveauFileInput.setAttribute('name','image' + compteImages);
 		fileInput.insertAdjacentElement('afterend',nouveauFileInput);
 
-		/*nouveauTitreInput = document.createElement('input');
+		nouveauTitreInput = document.createElement('input');
 		nouveauTitreInput.setAttribute('type','text');
 		nouveauTitreInput.setAttribute('name','image' + compteImages + 'Title');
-		nouveauFileInput.insertAdjacentElement('afterend',nouveauTitreInput);*/
+		nouveauFileInput.insertAdjacentElement('afterend',nouveauTitreInput);
 		
 		console.log('apres ' +compteImages);
 	};
